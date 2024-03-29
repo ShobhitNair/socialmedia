@@ -28,7 +28,7 @@
   app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
   app.use(cors(
     {
-      origin: ["https://quick-credit-frontend.vercel.app", "https://quick-credit-backend.vercel.app","http://localhost:3000"],
+      origin: ["https://quick-credit-frontend.vercel.app", "https://social-media-mern-two.vercel.app","http://localhost:3000"],
       methods: ["POST", "GET","PUT","DELETE"],
       credentials: true
     }
