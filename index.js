@@ -26,7 +26,13 @@
   app.use(morgan("common"));
   app.use(bodyParser.json({ limit: "30mb", extended: true }));
   app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
-  app.use(cors());
+  app.use(cors(
+    {
+      origin: ["https://quick-credit-frontend.vercel.app", "https://quick-credit-backend.vercel.app","http://localhost:3000"],
+      methods: ["POST", "GET","PUT","DELETE"],
+      credentials: true
+    }
+  ));
   app.use("/assets", express.static(path.join(__dirname, "public/assets")));
 
   /* FILE STORAGE */
@@ -54,11 +60,7 @@
 
   mongoose.set('strictQuery', false);
 
-app.use(express.static(path.resolve(__dirname,"client","build")));
-app.get('/',(req,res)=>{
-  res.sendFile(path.resolve(__dirname,"client","build","index.html"))
-})
-  
+
   mongoose.connect(process.env.MONGO_URL,{
     useNewUrlParser: true,
     useUnifiedTopology: true,
