@@ -33,6 +33,7 @@
       credentials: true
     }
   ));
+
   app.use("/assets", express.static(path.join(__dirname, "public/assets")));
 
   /* FILE STORAGE */
@@ -59,7 +60,9 @@
   const PORT = process.env.PORT|| 3001;
 
   mongoose.set('strictQuery', false);
-
+app.get('/', (req, res) => {
+  res.send('Welcome to social Media Server');
+});
 
   mongoose.connect(process.env.MONGO_URL,{
     useNewUrlParser: true,
